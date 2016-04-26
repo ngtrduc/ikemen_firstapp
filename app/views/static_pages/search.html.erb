@@ -1,0 +1,17 @@
+<% provide(:title, "Search") %>
+
+<div class="container">
+  <% if !@images.nil? %>
+  <%= render '/images/show' %>
+  <%= will_paginate @images%>
+  <%end%>
+  <% if !@users.nil? %>
+  <%= render 'users/list' %> 
+  <%end%>
+</div>
+<script type="">
+$("body").ready(function(){
+    $("body").attr("background","/images/bubble.jpg");
+});
+</script>
+

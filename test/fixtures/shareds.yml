@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Sharer_id: 1
+  shared_id: 1
+
+two:
+  Sharer_id: 1
+  shared_id: 1

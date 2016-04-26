@@ -1,0 +1,10 @@
+<div id="main">
+  <% @images.each do |image| %>
+  <article class="thumb">
+    <%= link_to image_tag(image.file, class: "fix"), "/images/" + image.id.to_s, class: "image" %>
+    <h2><%image.title%></h2>
+    <p><%image.describle%></p>
+  </article>
+  <%end%>
+</div>
+

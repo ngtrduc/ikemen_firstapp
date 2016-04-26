@@ -1,0 +1,14 @@
+<% provide(:title, "Search") %>
+
+<div class="container">
+	<h2>Searching</h2>
+  <% if !@images.nil? %>
+  <%= render '/images/show' %>
+  <%end%>
+  <% if !@users.nil? %>
+  <h2>Users searching </h2>
+  <%= render @users %>
+  <%end%>
+</div>
+
+

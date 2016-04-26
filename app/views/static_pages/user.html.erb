@@ -1,0 +1,67 @@
+<% provide(:title, current_user.name) %>
+<div class = "cover" style="background-image:url(/images/danang.jpg)">
+	<div class="col-sm-2">
+		<%= image_tag(current_user.avatar.url(:medium), class: "img-thumb",height: "100", width: "100") %>
+	</div>
+	<div >
+		<h2><%=current_user.name%></h2>
+		<p><%=@count%> Pictures</p>
+	</div>
+
+</div>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="blank" href="#"></a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li id="my-photo" class="active"><a href="#">Photo Stream</a></li>
+	      <li id="profile" ><a href="#">Profile</a></li>
+	      <li><a href="#">Shared Picture</a></li> 
+	    </ul>
+  	</div>
+</nav>
+
+
+<div class ="container">
+<div class="images" >
+	<%if @images.length !=0 %>
+<%= render 'images/show' %>
+<%= will_paginate @images %>
+<%else%>
+<p> You haven't uploaded anypicture yet </p>
+<%end%>
+</div>
+
+<div class="profile hide">
+	<div class ="col-sm-6 well dobong">
+		<h4> Email: <%= link_to current_user.email, user_path %></h4>
+		<h4> Name : <%= current_user.name %></h4>
+
+		<%= link_to "edit", edit_user_registration_path %>
+	</div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+// $("body").ready(function(){
+//     $("body").attr("background","/images/bubble.jpg");
+// });
+
+$("body").ready(function(){
+	$("body").attr("background","/images/bubble.jpg");
+	$("#profile").click(function(){
+		$("#my-photo").removeClass("active");
+		$("#profile").addClass("active");
+		$(".profile").removeClass("hide");
+		$(".images").addClass("hide");
+	});
+	$("#my-photo").click(function(){
+		$("#my-photo").addClass("active");
+		$("#profile").removeClass("active");
+		$(".profile").addClass("hide");
+		$(".images").removeClass("hide");
+	});
+});
+</script>

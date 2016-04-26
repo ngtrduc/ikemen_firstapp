@@ -1,0 +1,51 @@
+<div style="background-color: #f3f5f6">
+<div class = "single_image">
+	<%= image_tag @image.file,class: "sg-image"%>
+</div>
+	<% if current_user?(@image.user)%>
+        <%= link_to 'Delete', @image, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%end%>
+<div class="row">
+
+<div class="col-sm-4 well dobong">
+	<h2>Comment</h2>
+	<% @image.image_coment.each do |img_cmt| %>
+	<div class="well", style="background-color: #fff">
+		<%= image_tag(img_cmt.user.avatar.url(:medium), class: "img-circle",height: "20", width: "20") %>
+		<%= link_to img_cmt.user.email, "/user/#{@image.user.id}" %>
+		<p><%=img_cmt.comment%></p>
+		<% if current_user?(img_cmt.user)%>
+        <%= link_to 'Delete', img_cmt, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>
+	</div>
+	<%end%>
+	<%= form_for(@image_coment) do |f| %>
+<div class= "form-group ">
+	<%=f.text_field :comment, class: "form-control ",placeholder: "type comment here..." %>
+	<%= f.hidden_field :image_id, :value =>  @image.id %>
+</div>
+<div class="actions">
+	<% f.submit %>
+</div>
+<% end %>
+</div>
+	<div class = "col-sm-6">
+		<h2>
+		  <%= link_to (image_tag(@image.user.avatar.url(:medium), class: "img-circle",height: "50", width: "50")),"/user/#{@image.user.id}"  %>
+		  <%= link_to @image.user.email, "/user/#{@image.user.id}" %>
+		</h2>
+		<h2>
+		  <strong>Title:</strong>
+		  <%= @image.title %>
+		</h2>
+		<h2>
+		  <strong>Describle:</strong>
+		  <%= @image.describle %>
+		</h2>
+		<h4>Place : <%= link_to @image.place, "/#{@image.place}" %></h4>
+	</div>
+
+</div>
+
+</div>
+

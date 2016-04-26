@@ -1,0 +1,19 @@
+<div class = "cover" style="background-image:url(/images/HCm.jpg)">
+	<div class="col-sm-2">
+		<%= image_tag("/images/HCMcity.jpg", class: "img-thumb",height: "100", width: "100") %>
+	</div>
+	<h2>Mien Nam</h2>
+	<p><%=@images.length%> Picture </p>
+</div>
+<div class="container">
+	<div class="description">
+  <a href="#demo" class="btn btn-info" data-toggle="collapse">Description</a>
+  <div id="demo" class="collapse well">	
+	<h4>miền nam việt nam là một vùng đất đẹp gồm cả đồi núi lẫn đồng bằng, với bốn mùa riêng biệt.</h4>
+	<h4>Tại đây bạn có thể tìm thấy rất nhiêu bức ảnh từ mùa đông đến mua hè, từ vùng núi đến đồng bằng.</h4>
+  </div>
+
+</div>
+	<%= render 'images/show' %>
+	<%= will_paginate @images %>
+</div>
