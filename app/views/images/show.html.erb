@@ -19,15 +19,19 @@
         <%end%>
 	</div>
 	<%end%>
-	<%= form_for(@image_coment) do |f| %>
-<div class= "form-group ">
-	<%=f.text_field :comment, class: "form-control ",placeholder: "type comment here..." %>
-	<%= f.hidden_field :image_id, :value =>  @image.id %>
-</div>
-<div class="actions">
-	<% f.submit %>
-</div>
-<% end %>
+	<% if user_signed_in? %>
+		<%= form_for(@image_coment) do |f| %>
+		<div class= "form-group ">
+			<%=f.text_field :comment, class: "form-control ",placeholder: "type comment here..." %>
+			<%= f.hidden_field :image_id, :value =>  @image.id %>
+		</div>
+		<div class="actions">
+			<% f.submit %>
+		</div>
+		<% end %>
+	<% else %>
+		<p>Please login to comment !</p>
+	<% end %>
 </div>
 	<div class = "col-sm-6">
 		<h2>

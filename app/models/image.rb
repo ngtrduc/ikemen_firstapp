@@ -3,4 +3,6 @@ class Image < ActiveRecord::Base
 	validates :describle, length: {maximum: 100}
 	belongs_to :user
 	has_many :image_coment, -> { order "created_at DESC"}
+
+	has_many :like, dependent: :destroy
 end

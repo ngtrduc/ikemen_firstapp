@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   	devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :is_female, :date_of_birth, :avatar) }
   end
   def new_image
-  	@image = Image.new
+  	@new_image = Image.new
   end
 
 

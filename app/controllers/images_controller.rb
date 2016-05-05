@@ -1,13 +1,18 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
   # GET /images
   # GET /images.json
   def index
     @images = Image.paginate(page: params[:page], :per_page => 5)
+    redirect_to root_url
   end
-
+  def upvote
+    @link = Link.find(params[:id])
+    @link.upvote_by current_user
+    redirect_to links_path
+  end
   # GET /images/1
   # GET /images/1.json
   def show
